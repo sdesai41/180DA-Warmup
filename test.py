@@ -7,8 +7,8 @@ Created on Thu Jan  6 15:55:48 2022
 
 if __name__=="__main__":
     x="ECE180DA/DB"
-    if x=="ECE180DA/DB":
+    if x=="EE180DA/DB":
         print("you are living in 2017")
     else:
-        x=x+"Best class ever"
+        x=x+" -Best class ever"
         print(x)
