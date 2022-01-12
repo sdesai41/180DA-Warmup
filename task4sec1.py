@@ -5,6 +5,7 @@ Created on Thu Jan  6 16:08:54 2022
 @author: sohum
 """
 # from geeks for geeks thresholding colors
+#from stack overflow as well
 import numpy as np
 import cv2
 
@@ -27,16 +28,17 @@ while(True):
     # preparing the mask to overlay
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
     maskbgr= cv2.inRange(frame, lower_bluebgr, upper_bluebgr)
-    
+    #from stack overflow
     cnts = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     print(len(cnts))
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
  
     for c in cnts:
         x,y,w,h = cv2.boundingRect(c)
-        cv2.rectangle(hsv, (x, y), (x + w, y + h), (36,255,12), 5)
-
+        cv2.rectangle(hsv, (x, y), (x + w, y + h), (36,255,12), 5) #creating all bounding vectors
+        #end of code from stack overflow
     #cv2.imshow('mask', mask)
+    #change back to bgr to best show the picture
     bgr=cv2.cvtColor(hsv,cv2.COLOR_HSV2BGR)
     cv2.imshow('bounded', bgr)
     
@@ -45,6 +47,7 @@ while(True):
     result = cv2.bitwise_and(frame, frame, mask = mask)
     result2=cv2.bitwise_and(frame,frame, mask=maskbgr)
  
+    #showing both rgb and hsv masks and results
     #cv2.imshow('frame', frame)
     cv2.imshow('mask', mask)
     #cv2.imshow('mask2', maskbgr)
